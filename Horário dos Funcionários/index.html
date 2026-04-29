@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ponto – Pet Ops</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-deco deco-1"></div>
+        <div class="sidebar-deco deco-2"></div>
+
+        <div class="sidebar-logo">
+            <span class="logo-icon"></span>
+            <span class="logo-text">Pet Ops</span>
+        </div>
+
+        
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <div class="page-header">
+            <h1 class="page-title">Registro de Ponto</h1>
+            <p class="page-subtitle">Preencha os dados do colaborador para registrar o ponto.</p>
+        </div>
+
+        <div class="form-wrapper">
+
+            <!-- Card -->
+            <div class="card">
+                <div class="card-title">Dados do Colaborador</div>
+                <div class="field-grid">
+                    <div class="field">
+                        <label class="label">Nome completo <span class="required">*</span></label>
+                        <input class="input" type="text" placeholder="Nome do colaborador">
+                    </div>
+                    <div class="field">
+                        <label class="label">Matrícula <span class="required">*</span></label>
+                        <input class="input" type="text" placeholder="000000">
+                    </div>
+                    <div class="field">
+                        <label class="label">Data <span class="required">*</span></label>
+                        <input class="input" type="date" id="campo-data">
+                    </div>
+                    <div class="field">
+                        <label class="label">Hora <span class="required">*</span></label>
+                        <input class="input" type="time" id="campo-hora">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button class="btn-secondary" type="button">Limpar</button>
+                <button class="btn-primary" type="button">Registrar ponto</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const hoje = new Date();
+        const pad = n => String(n).padStart(2, '0');
+        document.getElementById('campo-data').value =
+            `${hoje.getFullYear()}-${pad(hoje.getMonth()+1)}-${pad(hoje.getDate())}`;
+        document.getElementById('campo-hora').value =
+            `${pad(hoje.getHours())}:${pad(hoje.getMinutes())}`;
+
+        document.querySelector('.btn-secondary').addEventListener('click', () => {
+            document.querySelectorAll('.input').forEach(i => i.value = '');
+        });
+    </script>
+</body>
+</html>
